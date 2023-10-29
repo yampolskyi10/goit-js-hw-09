@@ -1,13 +1,26 @@
 // js/03-promises.js
 
 function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
-  if (shouldResolve) {
-    return Promise.resolve({ position, delay });
-  } else {
-    return Promise.reject({ position, delay });
-  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const shouldResolve = Math.random() > 0.3;
+      const data = { position, delay };
+
+      if (shouldResolve) {
+        resolve(data);
+      } else {
+        reject(`Error: ${data}`);
+      }
+    }, delay);
+  });
 }
+
+const position = "Fulfilled promise";  
+const delayMs = 500; 
+
+createPromise(position, delayMs)
+  .then(result => console.log("Success:", result))
+  .catch(error => console.error("Error:", error));
 
 const form = document.querySelector('.form');
 
