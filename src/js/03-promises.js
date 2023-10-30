@@ -18,9 +18,7 @@ function createPromise(position, delay) {
 const position = "Fulfilled promise";  
 const delayMs = 500; 
 
-createPromise(position, delayMs)
-  .then(result => console.log("Success:", result))
-  .catch(error => console.error("Error:", error));
+
 
 const form = document.querySelector('.form');
 
